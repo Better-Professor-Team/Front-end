@@ -4,16 +4,16 @@ import axios from 'axios';
 
 const Login = props => {
   const [credentials, setCredentials] = useState({
-    username: "",
-    password: ""
+    'username': "",
+    'password': ""
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('https://better-professor-backend.herokuapp.com/api/login', credentials)
+    axios.post('https://better-professor-backend.herokuapp.com/users/login', credentials)
       .then(res => {
         console.log(res.data)
-        localStorage.setItem('token', res.data.payload)
+        localStorage.setItem('token', res.data.token)
         props.history.push('/AComponent');
       });
   };
