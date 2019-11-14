@@ -7,6 +7,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 import Navigation from "./components/Navigation";
 import Login from "./components/Login";
 import AComponent from "./components/AComponent";
+import Welcome from "./components/Welcome";
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
     <Router>
       <div className="App">
         <Navigation component={Navigation} />
-        <Route exact path="/"/>
+        <Route exact path="/" component={Welcome}/>
         <Route exact path="/Login" component={Login} />
         <ProtectedRoute exact path="/AComponent" component={AComponent} />
       </div>
