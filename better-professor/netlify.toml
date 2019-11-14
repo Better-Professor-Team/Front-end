@@ -1,9 +1,0 @@
-[build]
-  command = "npm run build"
-  publish="better-professor/build"
-  base = "better-professor"
-
-  [[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
