@@ -1,3 +1,5 @@
+// This is our navigation bar. It displays the links to navigate through our site.
+
 import React from "react";
 import './Navigation.css'
 import { NavLink } from 'react-router-dom';
