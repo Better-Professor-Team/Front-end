@@ -10,6 +10,7 @@ body,
   text-align: center;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 
   svg {
     height: 100%;
@@ -82,6 +83,11 @@ body,
   }
 
   .a-component {
+    width: 95%;
+    text-align: center;
+  }
+
+  .welcome {
     width: 95%;
     text-align: center;
   }
