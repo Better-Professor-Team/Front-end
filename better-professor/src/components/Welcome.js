@@ -1,3 +1,5 @@
+// This component will simply display a welcome message.
+
 import React from "react";
 import { NavLink } from 'react-router-dom';
 
