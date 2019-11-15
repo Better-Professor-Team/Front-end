@@ -27,7 +27,7 @@ const Navigation = () => {
 				</StyledUL>
 			</StyledNavigation>
 		</StyledNavigationContainer>
-		</StyledHeader >
+		</StyledHeader>
 	);
 };
 
@@ -79,7 +79,7 @@ const StyledLink = S(Link)`
     height: 2rem;
     padding: 10px 24px;
     border-radius: 20px;
-    text-decoration: none;
+    text-decoration: none;  
     background-color: ${props => props.secondary ? '#fff' : 'transparent'}
     transition: all ease-in-out 120ms;
     :hover {
