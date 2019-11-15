@@ -9,16 +9,12 @@
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-router-dom": "^5.1.2",
-<<<<<<< HEAD
     "react-scripts": "3.0.1",
     "semantic-ui": "^2.4.2",
     "styled-components": "^4.4.1"
   },
   "devDependencies": {
     "typescript": "3.3.3"
-=======
-    "react-scripts": "3.2.0"
->>>>>>> 2f68cebf35e584e433e1f1854168bcbbb7158940
   },
   "scripts": {
     "start": "react-scripts start",
