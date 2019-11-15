@@ -22,14 +22,14 @@ export const getStudents = () => dispatch => {
     .catch();
 };
 
-export const addStudents = student => dispatch => {
+export const addStudents = students => dispatch => {
   axios
     .post()
     .then()
     .catch();
 };
 
-export const delStudents = student => dispatch => {
+export const delStudents = students => dispatch => {
   axios
     .delete()
     .then()
@@ -44,14 +44,14 @@ export const getMessages = () => dispatch => {
     .catch();
 };
 
-export const addMessages = message => dispatch => {
+export const addMessages = messages => dispatch => {
   axios
     .post()
     .then()
     .catch();
 };
 
-export const delMessage = message => dispatch => {
+export const delMessage = messages => dispatch => {
   axios
     .delete()
     .then()
@@ -66,14 +66,14 @@ export const getProjects = () => dispatch => {
     .catch();
 };
 
-export const addProjects = project => dispatch => {
+export const addProjects = projects => dispatch => {
   axios
     .put()
     .then()
     .catch();
 };
 
-export const delProjects = project => dispatch => {
+export const delProjects = projects => dispatch => {
   axios
     .delete()
     .then()
