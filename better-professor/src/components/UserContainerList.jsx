@@ -30,8 +30,6 @@ const UserContainerList = () => {
                         users={users}
                     />
                 );
-
-
             })}
         </StyledContainer>
     );

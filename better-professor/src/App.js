@@ -8,7 +8,7 @@ import Navigation from "./components/Navigation";
 import Login from "./components/Login";
 import AComponent from "./components/AComponent";
 import Welcome from "./components/Welcome";
-import UserContainerList from "./components/UserContainerList";
+
 
 function App() {
   return (
@@ -19,7 +19,6 @@ function App() {
     // "component" is what we want to display.
     <Router>
       <div className="App">
-      <UserContainerList />
         <Navigation component={Navigation} />
         <Route exact path="/" component={Welcome}/>
         <Route exact path="/Login" component={Login} />
