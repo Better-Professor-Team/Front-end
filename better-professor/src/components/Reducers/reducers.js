@@ -9,10 +9,12 @@ import {
   DEL_MESSAGES,
   ADD_PROJECTS,
   GET_PROJECTS,
-  DEL_PROJECTS
+  DEL_PROJECTS,
+  EDIT_STUDENTS
 } from "../Actions/actions";
 
 const initialState = {
+  //the data types still need to be confirmed as to what they will be returned from the api calls.
   students: [],
   projects: [],
   messages: [],
@@ -54,6 +56,12 @@ export const reducer = (state = initialState, action) => {
         students: action.payload.data
       };
 
+    case EDIT_STUDENTS:
+      return {
+        ...state,
+        students: action.payload.data
+      };
+
     case ADD_MESSAGES:
       return {
         ...state,
@@ -89,7 +97,7 @@ export const reducer = (state = initialState, action) => {
         ...state,
         projects: action.payload.data
       };
-      
+
     default:
       return state;
   }
