@@ -6,8 +6,10 @@ import "./styles.scss";
 import ProtectedRoute from './components/ProtectedRoute';
 import Navigation from "./components/Navigation";
 import Login from "./components/Login";
+import SignupForm from "./components/SignupForm";
 import AComponent from "./components/AComponent";
 import Welcome from "./components/Welcome";
+import UserContainerList from "./components/UserContainerList";
 
 
 function App() {
@@ -22,7 +24,9 @@ function App() {
         <Navigation component={Navigation} />
         <Route exact path="/" component={Welcome}/>
         <Route exact path="/Login" component={Login} />
+        <Route exact path="/Signup" component={SignupForm} />
         <ProtectedRoute exact path="/AComponent" component={AComponent} />
+        <Route exact path="/testData" component={UserContainerList} />
       </div>
     </Router>
   );
