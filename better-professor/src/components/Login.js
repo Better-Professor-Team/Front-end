@@ -81,16 +81,6 @@ const Login = props => {
 
 export default Login;
 
-// const FormContainer = S.div`
-//     height: 100vh;
-//     display: flex;
-//     align-items: center;
-//     background-repeat: no-repeat;
-//     background-image: url(${BGImg});
-//     height: 100vh;
-//     background-position: center;
-//     background-size: cover;
-// `;
 const Form = S.form`
     width: 30%;
     min-width: 300px;

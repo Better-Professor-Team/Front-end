@@ -1,55 +1,57 @@
-import React,{useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import S from 'styled-components';
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from 'axios';
+import { withFormik, Form, Field } from 'formik';
+import * as Yup from 'yup';
 
-  const SignupForm = (props) => {
-    // create a user object.
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    
-    const handleEmail = (event) => {
-      setEmail(event.target.value);
-    }
-    const handlePassword = (event) => {
-      setPassword(event.target.value);
-    }
+const FormikForm = ({ values, handleChange, errors, touched, status }) => {
 
-    // Boiler Plate Post Call.
-    const handleSignUp = (event) => {
-      event.preventDefault();
-        axios.post(`/signup`, {email, password}, {  
-          headers: {
-            'content-type': 'application/json' // Tell the server we are sending this over as JSON
-          },
-        })
-        .then(function (response) {
-          console.log(response);
-          props.history.push("/");
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-    }
+  return (
+    <div className="login">
+      <StyledFormikForm>
+        <Title>Sign Up</Title>
+        <StyledLabel secondary="true" >Email Address
+        <FormikField
+          type="email"
+          label="Email"
+          name="email"
+          placeholder="email"
+          value={values.email}
+        />
+        {touched.email && errors.email && <ErrorMessage>{errors.email}</ErrorMessage>} 
+         </StyledLabel>
 
+        <StyledLabel secondary="true" >Password
+        <FormikField
+          label="Email"
+          type="password"
+          name="password"
+          placeholder="email"
+          value={values.password}
+        />
+        {touched.password && errors.password && <ErrorMessage>{errors.password}</ErrorMessage>}
+        </StyledLabel>
+        <StyledButton secondary="true" type="submit" >Get Started</StyledButton>
+      </StyledFormikForm>
+    </div>
+  );
+}
+const SignupForm = withFormik({
+  mapPropsToValues({ email, password}) {
+      return {
+          email: email || "",
+          password: password || ""
+      }
+  },
+  validationSchema: Yup.object().shape({
+      email: Yup.string().required("Please enter a valid email address"),
+      password: Yup.string().required("Please enter a password")
+    })
+})(FormikForm);
+export default SignupForm;
 
-    return(
-        <div className="login">
-            <Form action="/signup" method="post" onSubmit={handleSignUp}>
-                <Title>Sign Up</Title>
-                <StyledText secondary="true" >Email Address</StyledText>
-                <StyledInput label="Email" type="email" onChange={handleEmail} value={email}/>
-                <StyledText secondary="true" >Password</StyledText>
-                <StyledInput label="Email" type="password" onChange={handlePassword} value={password}/>
-                <StyledButton secondary="true" type="submit" >Get Started</StyledButton>
-            </Form>
-        </div>
-      );
-  }
-
-  export default SignupForm;
-
-  const Form = S.form`
+const StyledFormikForm = S(Form)`
     width: 30%;
     min-width: 300px;
     max-width: 500px;
@@ -66,20 +68,21 @@ import axios from 'axios';
     display: flex;
     justify-content: space-around;
   `;
-  const Title = S.h2`
+const Title = S.h2`
     font-size: 40px;
     color: #000;
     text-transform: uppercase;
   `;
 
-  const StyledInput = S.input`
+const FormikField = S(Field)`
     width: 80%;
     font-size: 20px;
     padding: 10px;
     border: 1px solid #000;
     border-radius: 50px;
+    margin-top: 10px;
   `;
-  const StyledButton = S.button`
+const StyledButton = S.button`
   display: flex;
   text-transform: uppercase;
   font-weight: 600;
@@ -105,23 +108,19 @@ import axios from 'axios';
       transform: scale(1.1);
   }
   `;
-
-  const StyledSignup = S(Link)`
-    font-size: 22px;
-    color: #003c80;
-    margin-left: 10px;
-    display: flex;
-    align-items: center;
-    height:  20px;
-    transition: all ease-in-out 120ms;
-    :hover {
-      letter-spacing: 1px;
-    }
-  `;
-const StyledText = S.span`
+const StyledLabel = S.label`
   font-size: 18px;
   display: flex;
   text-align: ${props => props.secondary ? 'left' : 'center'}
   width: ${props => props.secondary ? '80%' : 'auto'}
   margin: 0 auto;
+  display: flex;
+  flex-flow: row wrap;
+`;
+
+const ErrorMessage = S.p`
+    font-size: 14px;
+    font-weight: 500;
+    color: red;
+    width: 100%;
 `;
