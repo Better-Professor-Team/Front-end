@@ -18,6 +18,9 @@ const Navigation = () => {
 					<StyledLi>
 						<StyledLink to='/AComponent'>A Component</StyledLink>
 					</StyledLi>
+                    <StyledLi>
+						<StyledLink to='/add-user'>Add Student</StyledLink>
+					</StyledLi>
 					<StyledLi>
 						<StyledLink to="/Login">Login</StyledLink>
 					</StyledLi>
