@@ -1,56 +1,53 @@
-import React from 'react';
-import {withFormik, Form, Field} from 'formik';
+import React,{useState, useEffect} from 'react';
+import axios from 'axios';
+import {withFormik, setStatus} from 'formik';
 import * as Yup from 'yup';
-import S from 'styled-components';
 import { StyledFormikForm, StyledLink, FormikField, StyledButton, StyledLabel, ErrorMessage} from './FormStyledComponents';
 
 
 const FormikForm = ({ values, handleChange, errors, touched, status }) => {
+
+  // const [users, setUsers] = useState([]);
+
+  // useEffect( () => {
+  //     status && setUsers(users => [...users, status])
+  // },[status]);
+
     return(
         <StyledFormikForm>
         <StyledLabel secondary="true" > Students Name
         <FormikField
           type="text"
           label="Students Name"
-          name="studentsName"
+          name="student_name"
           placeholder="Students Name"
-          value={values.studentsName}
+          value={values.student_name}
         />
-        {touched.studentsName && errors.studentsName && <ErrorMessage>{errors.studentsName}</ErrorMessage>} 
+        {touched.student_name && errors.student_name && <ErrorMessage>{errors.student_name}</ErrorMessage>} 
          </StyledLabel>
 
-        <StyledLabel secondary="true" > Courses
+        <StyledLabel secondary="true" > Major
         <FormikField
           label="Course"
           type="text"
-          name="courses"
-          placeholder="Courses"
-          value={values.courses}
+          name="major"
+          placeholder="Major"
+          value={values.major}
         />
-        {touched.courses && errors.courses && <ErrorMessage>{errors.courses}</ErrorMessage>}
+        {touched.major && errors.major && <ErrorMessage>{errors.major}</ErrorMessage>}
         </StyledLabel>
 
-        <StyledLabel secondary="true" > Projects
+        <StyledLabel secondary="true" > Professor Id
         <FormikField
-          label="Projects"
+          label="Professor Id"
           type="text"
-          name="projects"
-          placeholder="projects"
-          value={values.projects}
+          name="user_id"
+          placeholder="Associated Professor Name"
+          value={values.user_id}
         />
-        {touched.projects && errors.projects && <ErrorMessage>{errors.projects}</ErrorMessage>}
+        {touched.user_id && errors.user_id && <ErrorMessage>{errors.user_id}</ErrorMessage>}
         </StyledLabel>
 
-        <StyledLabel secondary="true" > Grade
-        <FormikField
-          label="Grade"
-          type="text"
-          name="grade"
-          placeholder="grade"
-          value={values.grade}
-        />
-        {touched.grade && errors.grade && <ErrorMessage>{errors.grade}</ErrorMessage>}
-        </StyledLabel>
 
 
         <StyledButton secondary="true" type="submit" >Get Started</StyledButton>
@@ -59,20 +56,31 @@ const FormikForm = ({ values, handleChange, errors, touched, status }) => {
 }
 
 const EditUserForm = withFormik({
-    mapPropsToValues({ studentsName, courses, projects, grade}) {
+    mapPropsToValues({ student_name, major, user_id}) {
         return {
-            studentsName: studentsName || "",
-            courses: courses || "",
-            projects: projects || "", // Change to array since it will be a list of projects.
-            grade: grade || "",
+            student_name: student_name || "",
+            major: major || "",
+            user_id: user_id || "",
         }
     },
     validationSchema: Yup.object().shape({
-        studentsName: Yup.string().required("Please enter a valid Student Name"),
-        courses: Yup.string().required("Please enter a course"),
-        projects: Yup.string().required("Please enter one project at minimal"),
-        grade: Yup.string().required("Please enter a the students grade")
-      })
+        student_name: Yup.string().required("Please enter a valid Student Name"),
+        major: Yup.string().required("Please enter a major"),
+        user_id: Yup.string().required("Please enter a professors name"),
+      }),
+      
+      handleSubmit(values, {setStatus}) {
+        axios
+          .post("http://localhost:5000/students", values)
+          .then(response => {
+            console.log(response);
+            setStatus(response.data.name)
+          })
+          .catch(error => {
+            console.log(error);
+          });
+      }
+
 })(FormikForm);
 
 export default EditUserForm;
