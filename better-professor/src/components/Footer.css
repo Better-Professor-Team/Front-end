@@ -1,0 +1,69 @@
+
+
+
+
+@import "compass/css3";
+
+@import url(https://fonts.googleapis.com/css?family=Raleway);
+
+/* Colors */
+:root {
+    --dk-blue: #1E83AE;
+    --blue: #3D5B94;
+    --light-blue: #3DACDD;
+    --green: #6dcd9a;
+    --sial-size: 1.2em;
+    --social-width: 20%;
+}
+
+
+
+
+
+* {
+  margin: 0;
+  padding: 0;
+  @}
+
+html, body {
+  font-family: Raleway, sans-serif;  
+  background-color: #fff;
+}
+
+footer {
+  width: 100%;
+  display: inline-block;
+  margin: 2em 0;
+  height: 70px;
+  background-color: #999;
+  .        
+  }
+  .social {
+      width: 50%;
+      float: right;
+      }
+     {
+      float: left;
+      line-height: 70px;
+      text-decoration: none;
+      color: white;
+      text-align: center;
+      font-weight: bold; 
+      @      
+    }
+  }
+
+    .copyright {
+      width: 50%;
+      float: left;}
+  
+
+
+
+.linked {
+  background-color: $dk-blue;
+  font-size: $social-size;
+  width: $social-width;
+
+  }
+

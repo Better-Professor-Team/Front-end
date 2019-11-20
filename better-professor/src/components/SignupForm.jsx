@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import S from 'styled-components';
-import { Link } from "react-router-dom";
-import axios from 'axios';
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 

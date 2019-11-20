@@ -10,6 +10,7 @@ import SignupForm from "./components/SignupForm";
 import AComponent from "./components/AComponent";
 import Welcome from "./components/Welcome";
 import UserContainerList from "./components/UserContainerList";
+import EditUserForm from "./components/EditUserForm";
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
         <Route exact path="/Signup" component={SignupForm} />
         <ProtectedRoute exact path="/AComponent" component={AComponent} />
         <Route exact path="/testData" component={UserContainerList} />
+        <Route exact path="/add-user" component={EditUserForm} />
       </div>
     </Router>
   );
