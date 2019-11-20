@@ -21,6 +21,7 @@ const Navigation = () => {
 						<StyledLink to="/students">Students</StyledLink>
 					</StyledLi>
                     <StyledLi>
+
 						<StyledLink to='/add-user'>Add Student</StyledLink>
 					</StyledLi>
 					<StyledLi>

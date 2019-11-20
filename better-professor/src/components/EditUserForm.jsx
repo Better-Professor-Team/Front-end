@@ -1,24 +1,20 @@
+
 import React,{useState, useEffect} from 'react';
 import axios from 'axios';
 import {withFormik, setStatus} from 'formik';
 import * as Yup from 'yup';
+
 import { StyledFormikForm, StyledLink, FormikField, StyledButton, StyledLabel, ErrorMessage} from './FormStyledComponents';
 
 
 const FormikForm = ({ values, handleChange, errors, touched, status }) => {
-
-  // const [users, setUsers] = useState([]);
-
-  // useEffect( () => {
-  //     status && setUsers(users => [...users, status])
-  // },[status]);
-
     return(
         <StyledFormikForm>
         <StyledLabel secondary="true" > Students Name
         <FormikField
           type="text"
           label="Students Name"
+
           name="student_name"
           placeholder="Students Name"
           value={values.student_name}
@@ -80,8 +76,7 @@ const EditUserForm = withFormik({
             console.log(error);
           });
       }
-
+   
 })(FormikForm);
 
 export default EditUserForm;
-
