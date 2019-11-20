@@ -12,6 +12,10 @@ import Welcome from "./components/Welcome";
 import UserContainerList from "./components/UserContainerList";
 import EditUserForm from "./components/EditUserForm";
 
+import S from 'styled-components';
+import './fonts.css';
+
+
 
 function App() {
   return (
@@ -21,15 +25,15 @@ function App() {
     // to simulate a link. The "path" defines what is displayed as the URL and the 
     // "component" is what we want to display.
     <Router>
-      <div className="App">
+      <StyledDiv className="App">
         <Navigation component={Navigation} />
         <Route exact path="/" component={Welcome}/>
         <Route exact path="/Login" component={Login} />
         <Route exact path="/Signup" component={SignupForm} />
         <ProtectedRoute exact path="/AComponent" component={AComponent} />
-        <Route exact path="/testData" component={UserContainerList} />
+        <Route exact path="/students" component={UserContainerList} />
         <Route exact path="/add-user" component={EditUserForm} />
-      </div>
+      </StyledDiv>
     </Router>
   );
 }
@@ -38,3 +42,7 @@ function App() {
 
 export default App;
 
+const StyledDiv = S.div`
+background-color: #000000db;
+margin: 0;
+`;
