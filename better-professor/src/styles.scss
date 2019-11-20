@@ -1,94 +1,94 @@
-@import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
+// @import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
 
-html,
-body,
-#root,
+// html,
+// body,
+// #root,
 
-.App {
-  width: 100%;
-  font-family: "Montserrat", sans-serif;
-  text-align: center;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+// .App {
+//   width: 100%;
+//   font-family: "Montserrat", sans-serif;
+//   text-align: center;
+//   display: flex;
+//   flex-wrap: wrap;
+//   justify-content: center;
 
-  svg {
-    height: 100%;
-  }
+//   svg {
+//     height: 100%;
+//   }
 
-  .navigation {
-    width: 95%;
-    display: flex;
-    justify-content: center;
-    padding: 0;
-    transition: 0.2s ease-in;
-    margin: auto 30px;
-    margin-bottom: 10px;
-    margin-top: 5px;
-    background: #a2cf88;
-    border-radius: 10px;
+//   .navigation {
+//     width: 95%;
+//     display: flex;
+//     justify-content: center;
+//     padding: 0;
+//     transition: 0.2s ease-in;
+//     margin: auto 30px;
+//     margin-bottom: 10px;
+//     margin-top: 5px;
+//     background: #a2cf88;
+//     border-radius: 10px;
 
-    a {
-      color: Black;
-      text-decoration: none;
-      padding: 30px 40px;
-    }
+//     a {
+//       color: Black;
+//       text-decoration: none;
+//       padding: 30px 40px;
+//     }
 
-    span {
-      display: inline-block;
-      position: relative;
-      top: -8px;
-      left: 0px;
-      font-weight: bold;
-      line-height: 18px;
-      text-align: center;
-      border-radius: 100%;
-      width: 18px;
-      height: 18px;
-    }
-  }
+//     span {
+//       display: inline-block;
+//       position: relative;
+//       top: -8px;
+//       left: 0px;
+//       font-weight: bold;
+//       line-height: 18px;
+//       text-align: center;
+//       border-radius: 100%;
+//       width: 18px;
+//       height: 18px;
+//     }
+//   }
 
-  .login {
-    width: 95%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 10px;
+//   .login {
+//     width: 95%;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     padding: 10px;
 
-    form {
-      padding: 10px;
-      margin: auto;
-      display: flex;
-      flex-direction: column;
-      border-radius: 10px;
+//     form {
+//       padding: 10px;
+//       margin: auto;
+//       display: flex;
+//       flex-direction: column;
+//       border-radius: 10px;
 
-      input {
-        padding: 10px;
-        margin-bottom: 10px;
-        border-radius: 10px;
-      }
+//       input {
+//         padding: 10px;
+//         margin-bottom: 10px;
+//         border-radius: 10px;
+//       }
 
-      button {
-        background: #a2cf88;
-        border: none;
-        color: white;
-        padding: 10px;
-        text-align: center;
-        text-decoration: none;
-        font-size: 16px;
-        margin-bottom: 10px;
-        border-radius: 10px;
-      }
-    }
-  }
+//       button {
+//         background: #a2cf88;
+//         border: none;
+//         color: white;
+//         padding: 10px;
+//         text-align: center;
+//         text-decoration: none;
+//         font-size: 16px;
+//         margin-bottom: 10px;
+//         border-radius: 10px;
+//       }
+//     }
+//   }
 
-  .a-component {
-    width: 95%;
-    text-align: center;
-  }
+//   .a-component {
+//     width: 95%;
+//     text-align: center;
+//   }
 
-  .welcome {
-    width: 95%;
-    text-align: center;
-  }
-}
+//   .welcome {
+//     width: 95%;
+//     text-align: center;
+//   }
+// }

@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css?family=Alatsi|Montserrat&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Alatsi', sans-serif;
+
+}
+
+.icon {
+    font-size: 30px;
+    color: #fff;
+}
+.iconHover:hover .icon {
+    color: #000;
+}

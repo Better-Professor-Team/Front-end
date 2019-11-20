@@ -40,7 +40,6 @@ export default UserContainerList;
 const StyledContainer = S.section`
     width: 100%;
     height: 100%;
-    background-color: #d6d6d6;
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
