@@ -11,6 +11,7 @@ import {
   StyledLabel,
   ErrorMessage
 } from "./FormStyledComponents";
+import { axiosWithAuth } from "./API/Auth";
 
 const FormikForm = ({ values, handleChange, errors, touched, status }) => {
   return (
@@ -82,18 +83,8 @@ const EditUserForm = withFormik({
   }),
 
   handleSubmit(values, { setStatus }) {
-    axios({
-      method: 'post',
-      url: "https://better-professor-backend.herokuapp.com/students",
-      headers: {
-        Authorization: localStorage.getItem("token")
-      },
-      data: {
-          student_name: values.student_name,
-          major: values.major,
-          user_id: values.user_id
-      }
-      })
+    axiosWithAuth()
+    .post('/students', values)
       .then(response => {
         console.log(response);
         setStatus(response.data.name);

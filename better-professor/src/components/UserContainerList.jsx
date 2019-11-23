@@ -9,17 +9,15 @@ const UserContainerList = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    axios
-      .get(`https://better-professor-backend.herokuapp.com/students/user/1`, {
-        headers: {
-          Authorization: localStorage.getItem("token")
-        }
-      })
-      .then(response => {
-        console.log(response.data);
-        setUsers(response.data);
-      })
-      .catch(error => console.log(error));
+    axiosWithAuth()
+    .get(`/students/user/1`)
+    .then(response => {
+      console.log(response.data);
+      setUsers(response.data);
+    })
+    .catch(error => {
+      console.error(error);
+    });
   }, []);
 
   return (
