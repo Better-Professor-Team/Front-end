@@ -6,7 +6,7 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons'
 
 
 const UserCard = (props) => {
-    const { student_name, major, id } = props.users;
+    const { student_name, major } = props.users;
     return (
         <Card>
             <UserActionsContainer>

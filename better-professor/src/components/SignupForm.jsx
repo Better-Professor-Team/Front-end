@@ -1,51 +1,62 @@
-import React, { useState, useEffect } from 'react';
-import S from 'styled-components';
-import { withFormik, Form, Field } from 'formik';
-import * as Yup from 'yup';
+import React from "react";
+import S from "styled-components";
+import { withFormik, Form, Field } from "formik";
+import * as Yup from "yup";
+import { Redirect } from "react-router-dom";
 
 const FormikForm = ({ values, handleChange, errors, touched, status }) => {
-
   return (
     <div className="login">
       <StyledFormikForm>
         <Title>Sign Up</Title>
-        <StyledLabel secondary="true" >Email Address
-        <FormikField
-          type="email"
-          label="Email"
-          name="email"
-          placeholder="email"
-          value={values.email}
-        />
-        {touched.email && errors.email && <ErrorMessage>{errors.email}</ErrorMessage>} 
-         </StyledLabel>
-
-        <StyledLabel secondary="true" >Password
-        <FormikField
-          label="Email"
-          type="password"
-          name="password"
-          placeholder="email"
-          value={values.password}
-        />
-        {touched.password && errors.password && <ErrorMessage>{errors.password}</ErrorMessage>}
+        <StyledLabel secondary="true">
+          Email Address
+          <FormikField
+            type="email"
+            label="Email"
+            name="email"
+            placeholder="email"
+            value={values.email}
+          />
+          {touched.email && errors.email && (
+            <ErrorMessage>{errors.email}</ErrorMessage>
+          )}
         </StyledLabel>
-        <StyledButton secondary="true" type="submit" >Get Started</StyledButton>
+
+        <StyledLabel secondary="true">
+          Password
+          <FormikField
+            label="Password"
+            type="password"
+            name="password"
+            placeholder="password"
+            value={values.password}
+          />
+          {touched.password && errors.password && (
+            <ErrorMessage>{errors.password}</ErrorMessage>
+          )}
+        </StyledLabel>
+        <StyledButton secondary="true" type="submit">
+          Get Started
+        </StyledButton>
       </StyledFormikForm>
     </div>
   );
-}
+};
 const SignupForm = withFormik({
-  mapPropsToValues({ email, password}) {
-      return {
-          email: email || "",
-          password: password || ""
-      }
+  mapPropsToValues({ email, password }) {
+    return (
+      {
+        email: "email" || "",
+        password: "password" || ""
+      },
+      (<Redirect to="/Login" />)
+    );
   },
   validationSchema: Yup.object().shape({
-      email: Yup.string().required("Please enter a valid email address"),
-      password: Yup.string().required("Please enter a password")
-    })
+    email: Yup.string().required("Please enter a valid email address"),
+    password: Yup.string().required("Please enter a password")
+  })
 })(FormikForm);
 export default SignupForm;
 
@@ -86,11 +97,11 @@ const StyledButton = S.button`
   font-weight: 600;
   align-items: center;
   font-size: 20px;
-  color: ${props => props.secondary ? '#fff' : '#000'};
+  color: ${props => (props.secondary ? "#fff" : "#000")};
   padding: 10px 24px;
   border-radius: 20px;
   text-decoration: none;
-  background-color: ${props => props.secondary ? '#0077ff' : 'transparent'}
+  background-color: ${props => (props.secondary ? "#0077ff" : "transparent")}
   transition: all ease-in-out 120ms;
   height: 40px;
   width: 200px;
@@ -99,7 +110,8 @@ const StyledButton = S.button`
   justify-content: center;
   margin-top: 20px;
   :hover {
-      background-color: ${props => props.secondary ? '#003c80' : 'rgba(194, 194, 194, 0.4)'}
+      background-color: ${props =>
+        props.secondary ? "#003c80" : "rgba(194, 194, 194, 0.4)"}
   }
   :active {
       box-shadow: 0px 2px 5px 0px #464545;
@@ -109,8 +121,8 @@ const StyledButton = S.button`
 const StyledLabel = S.label`
   font-size: 18px;
   display: flex;
-  text-align: ${props => props.secondary ? 'left' : 'center'}
-  width: ${props => props.secondary ? '80%' : 'auto'}
+  text-align: ${props => (props.secondary ? "left" : "center")}
+  width: ${props => (props.secondary ? "80%" : "auto")}
   margin: 0 auto;
   display: flex;
   flex-flow: row wrap;

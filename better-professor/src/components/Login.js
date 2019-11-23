@@ -21,23 +21,23 @@ const FormikForm = ({ values, handleChange, errors, touched, status }) => {
     <div className="login">
       <StyledFormikForm>
         <Title>Login</Title>
-        <StyledLabel secondary="true" >Email Address
+        <StyledLabel secondary="true" >Username
         <FormikField
-            type="email"
-            label="Email"
-            name="email"
-            placeholder="email"
-            value={values.email}
+            type="username"
+            label="Username"
+            name="username"
+            placeholder="username"
+            value={values.username}
           />
-          {touched.email && errors.email && <ErrorMessage>{errors.email}</ErrorMessage>}
+          {touched.username && errors.username && <ErrorMessage>{errors.username}</ErrorMessage>}
         </StyledLabel>
 
         <StyledLabel secondary="true" >Password
         <FormikField
-            label="Email"
             type="password"
+            label="Password"            
             name="password"
-            placeholder="email"
+            placeholder="password"
             value={values.password}
           />
           {touched.password && errors.password && <ErrorMessage>{errors.password}</ErrorMessage>}
@@ -50,24 +50,25 @@ const FormikForm = ({ values, handleChange, errors, touched, status }) => {
 };
 
 const Login = withFormik({
-  mapPropsToValues({ email, password }) {
+  mapPropsToValues({ username, password }) {
     return {
-      email: email || "",
+      username: username || "",
       password: password || ""
     }
   },
   validationSchema: Yup.object().shape({
-    email: Yup.string().required("Please enter a valid email address"),
+    username: Yup.string().required("Please enter a valid username"),
     password: Yup.string().required("Please enter a password")
   }),
   handleSubmit(values, { setStatus }) {
-    // e.preventDefault();
     axios
       .post("https://better-professor-backend.herokuapp.com/users/login", values)
       .then(res => {
         console.log(res);
         setStatus(res.data.name)
-      })
+        localStorage.setItem('token', res.data.token)
+      }
+      )
       .catch(err => {
         console.log(err);
       });
