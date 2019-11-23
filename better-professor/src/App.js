@@ -7,11 +7,9 @@ import ProtectedRoute from './components/ProtectedRoute';
 import Navigation from "./components/Navigation";
 import Login from "./components/Login";
 import SignupForm from "./components/SignupForm";
-import AComponent from "./components/AComponent";
 import Welcome from "./components/Welcome";
 import UserContainerList from "./components/UserContainerList";
 import EditUserForm from "./components/EditUserForm";
-
 import S from 'styled-components';
 import './fonts.css';
 
@@ -30,9 +28,8 @@ function App() {
         <Route exact path="/" component={Welcome}/>
         <Route exact path="/Login" component={Login} />
         <Route exact path="/Signup" component={SignupForm} />
-        <ProtectedRoute exact path="/AComponent" component={AComponent} />
-        <Route exact path="/students" component={UserContainerList} />
-        <Route exact path="/add-user" component={EditUserForm} />
+        <ProtectedRoute exact path="/students" component={UserContainerList} />
+        <ProtectedRoute exact path="/add-user" component={EditUserForm} />
       </StyledDiv>
     </Router>
   );

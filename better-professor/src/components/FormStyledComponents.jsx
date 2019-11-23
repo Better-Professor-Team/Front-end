@@ -1,14 +1,8 @@
 import S from "styled-components";
-import {
-    Form,
-    Field
-} from "formik";
-import {
-    Link
-} from "react-router-dom";
+import { Form, Field } from "formik";
+import { Link } from "react-router-dom";
 
-const StyledFormikForm = S(Form)
-`
+const StyledFormikForm = S(Form)`
     width: 30%;
     min-width: 300px;
     max-width: 500px;
@@ -25,8 +19,7 @@ const StyledFormikForm = S(Form)
     display: flex;
     justify-content: space-around;
   `;
-const StyledLink = S(Link)
-`
+const StyledLink = S(Link)`
     font-size: 18px;
     text-decoration: underline;
     color: #666;
@@ -35,15 +28,14 @@ const StyledLink = S(Link)
         color: #000;
     }
   `;
-const FormikField = S(Field)
-`
+const FormikField = S(Field)`
     width: 90%;
     font-size: 20px;
     padding: 10px;
     border: 1px solid #000;
     border-radius: 50px;
   `;
-const StyledButton = S.button `
+const StyledButton = S.button`
   display: flex;
   text-transform: uppercase;
   font-weight: 600;
@@ -69,7 +61,7 @@ const StyledButton = S.button `
       transform: scale(1.1);
   }
   `;
-const StyledLabel = S.label `
+const StyledLabel = S.label`
   font-size: 18px;
   display: flex;
   text-align: ${props => (props.secondary ? "left" : "center")}
@@ -79,18 +71,18 @@ const StyledLabel = S.label `
   flex-flow: row wrap;
   font-weight: 600;
 `;
-const ErrorMessage = S.p `
+const ErrorMessage = S.p`
     font-size: 14px;
     font-weight: 500;
     color: red;
     width: 100%;
 `;
-const Title = S.h2 `
+const Title = S.h2`
     font-size: 40px;
     color: #000;
     text-transform: uppercase;
   `;
-const StyledText = S.span `
+const StyledText = S.span`
   font-size: 18px;
   display: flex;
   text-align: ${props => (props.secondary ? "left" : "center")}
@@ -111,13 +103,13 @@ const StyledSignup = S(Link)`
     }
   `;
 export {
-    StyledFormikForm,
-    StyledLink,
-    FormikField,
-    StyledButton,
-    StyledLabel,
-    ErrorMessage,
-    Title,
-    StyledText,
-    StyledSignup
+  StyledFormikForm,
+  StyledLink,
+  FormikField,
+  StyledButton,
+  StyledLabel,
+  ErrorMessage,
+  Title,
+  StyledText,
+  StyledSignup
 };
