@@ -61,7 +61,7 @@ const FormikForm = ({ values, handleChange, errors, touched, status }) => {
       </StyledLabel>
 
       <StyledButton secondary="true" type="submit">
-        Get Started
+        Add Student
       </StyledButton>
     </StyledFormikForm>
   );
