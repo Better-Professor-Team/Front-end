@@ -1,30 +1,32 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState, useEffect, useContext } from "react";
 import S from "styled-components";
 import { axiosWithAuth } from "./API/Auth";
-
 import UserCard from "./UserCard.jsx";
+import UsersContext from "./contexts/UsersContext"
 
-const UserContainerList = () => {
-  const [users, setUsers] = useState([]);
+const UserContainerList = () => { 
+  const { users, setUsers } = useContext(UsersContext)
+
+
+  
+
+ 
 
   useEffect(() => {
-    axios
-      .get(`https://better-professor-backend.herokuapp.com/students/user/1`, {
-        headers: {
-          Authorization: localStorage.getItem("token")
-        }
-      })
-      .then(response => {
-        console.log(response.data);
-        setUsers(response.data);
-      })
-      .catch(error => console.log(error));
+    axiosWithAuth()
+    .get(`/students/user/1`)
+    .then(response => {
+      console.log(response.data);
+      setUsers(response.data);
+    })
+    .catch(error => {
+      console.error(error);
+    });
   }, []);
 
   return (
     <StyledContainer>
-      {users.map((users, index) => {
+      {users.map((users, index, student) => {
         return <UserCard key={index} users={users} />;
       })}
     </StyledContainer>
