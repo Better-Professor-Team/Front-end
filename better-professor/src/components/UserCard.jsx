@@ -3,12 +3,6 @@ import S from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import UsersContext from "./contexts/UsersContext";
-import {
-  StyledFormikForm,
-  FormikField,
-  StyledLabel,
-  ErrorMessage
-} from "./FormStyledComponents";
 import { axiosWithAuth } from "./API/Auth";
 
 const UserCard = props => {
@@ -42,6 +36,7 @@ const UserCard = props => {
       .put(`/students/${studentToEdit.id}`, studentToEdit)
       .then(result => {
         console.log(result)
+        e.preventDefault()
       })
       .catch(error => {
         console.log(error);
