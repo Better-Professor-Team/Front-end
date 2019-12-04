@@ -1,62 +1,90 @@
 import React from "react";
-import S from "styled-components";
+import axios from 'axios';
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
-import { Redirect } from "react-router-dom";
+import S from "styled-components";
 
 const FormikForm = ({ values, handleChange, errors, touched, status }) => {
+
   return (
     <div className="login">
       <StyledFormikForm>
-        <Title>Sign Up</Title>
-        <StyledLabel secondary="true">
-          Email Address
-          <FormikField
-            type="email"
-            label="Email"
-            name="email"
-            placeholder="email"
-            value={values.email}
+        <Title>Register</Title>
+        <StyledLabel secondary="true" >First Name
+        <FormikField
+            type="text"
+            label="first_name"
+            name="first_name"
+            placeholder="First Name"
+            value={values.first_name}
           />
-          {touched.email && errors.email && (
-            <ErrorMessage>{errors.email}</ErrorMessage>
-          )}
+          {touched.first_name && errors.first_name && <ErrorMessage>{errors.first_name}</ErrorMessage>}
         </StyledLabel>
 
-        <StyledLabel secondary="true">
-          Password
-          <FormikField
-            label="Password"
+        <StyledLabel secondary="true" >Last Name
+        <FormikField
+            type="text"
+            label="last_name"
+            name="last_name"
+            placeholder="Last name"
+            value={values.last_name}
+          />
+          {touched.last_name && errors.last_name && <ErrorMessage>{errors.last_name}</ErrorMessage>}
+        </StyledLabel>
+
+        <StyledLabel secondary="true" >Username
+        <FormikField
+            type="username"
+            label="Username"
+            name="username"
+            placeholder="username"
+            value={values.username}
+          />
+          {touched.username && errors.username && <ErrorMessage>{errors.username}</ErrorMessage>}
+        </StyledLabel>
+
+        <StyledLabel secondary="true" >Password
+        <FormikField
             type="password"
+            label="Password"            
             name="password"
             placeholder="password"
             value={values.password}
           />
-          {touched.password && errors.password && (
-            <ErrorMessage>{errors.password}</ErrorMessage>
-          )}
+          {touched.password && errors.password && <ErrorMessage>{errors.password}</ErrorMessage>}
         </StyledLabel>
-        <StyledButton secondary="true" type="submit">
-          Get Started
-        </StyledButton>
+        <StyledButton secondary="true" type="submit" >Sign Up</StyledButton>
       </StyledFormikForm>
     </div>
   );
 };
+
 const SignupForm = withFormik({
-  mapPropsToValues({ email, password }) {
-    return (
-      {
-        email: "email" || "",
-        password: "password" || ""
-      },
-      (<Redirect to="/Login" />)
-    );
+  mapPropsToValues({ username, password, first_name, last_name }) {
+    return {
+      username: username || "",
+      password: password || "",
+      first_name: first_name || "",
+      last_name: last_name || "",
+    }
   },
   validationSchema: Yup.object().shape({
-    email: Yup.string().required("Please enter a valid email address"),
+    username: Yup.string().required("Please enter a valid username"),
     password: Yup.string().required("Please enter a password")
-  })
+  }),
+  handleSubmit(values, { setStatus }) {
+    axios
+      .post("https://better-professor-backend.herokuapp.com/users/register", values)
+      .then(res => {
+        console.log(res);
+        setStatus(res.data.name)
+        localStorage.setItem('token', res.data.token)
+      }
+      )
+      .catch(err => {
+        console.log(err);
+      });
+  }
 })(FormikForm);
 export default SignupForm;
 
