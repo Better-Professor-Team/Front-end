@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { withFormik, setStatus } from "formik";
 import * as Yup from "yup";
 
 import {
   StyledFormikForm,
-  StyledLink,
   FormikField,
   StyledButton,
   StyledLabel,

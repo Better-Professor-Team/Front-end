@@ -1,11 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import S from "styled-components";
 import { axiosWithAuth } from "./API/Auth";
-
 import UserCard from "./UserCard.jsx";
+import UsersContext from "./contexts/UsersContext"
 
-const UserContainerList = () => {
-  const [users, setUsers] = useState([]);
+const UserContainerList = () => { 
+  const { users, setUsers } = useContext(UsersContext)
+
+
+  
+
+ 
 
   useEffect(() => {
     axiosWithAuth()
@@ -21,7 +26,7 @@ const UserContainerList = () => {
 
   return (
     <StyledContainer>
-      {users.map((users, index) => {
+      {users.map((users, index, student) => {
         return <UserCard key={index} users={users} />;
       })}
     </StyledContainer>
