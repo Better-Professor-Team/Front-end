@@ -32,11 +32,12 @@ const UserCard = props => {
   };
 
   const saveEdit = e => {
+    e.preventDefault();
     axiosWithAuth()
+    
       .put(`/students/${studentToEdit.id}`, studentToEdit)
       .then(result => {
         console.log(result)
-        e.preventDefault()
       })
       .catch(error => {
         console.log(error);
